@@ -1,0 +1,531 @@
+/* ============================================================
+   POKEMON DATABASE
+   ============================================================ */
+
+DROP DATABASE IF EXISTS Pokemon_Database;
+
+CREATE DATABASE Pokemon_Database;
+
+USE Pokemon_Database;
+
+
+/* ============================================================
+   1. LOOKUP / INDEPENDENT TABLES
+   ============================================================ */
+
+CREATE TABLE Type (
+    Type_ID INT AUTO_INCREMENT,
+    Type_Name VARCHAR(30) NOT NULL,
+
+    PRIMARY KEY (Type_ID),
+
+    UNIQUE (Type_Name)
+);
+
+
+CREATE TABLE Ability (
+    Ablty_ID INT AUTO_INCREMENT,
+    Ablty_Name VARCHAR(50) NOT NULL,
+    Ablty_Desc TEXT,
+
+    PRIMARY KEY (Ablty_ID),
+
+    UNIQUE (Ablty_Name)
+);
+
+
+CREATE TABLE Region (
+    Region_ID INT AUTO_INCREMENT,
+    Region_Name VARCHAR(50) NOT NULL,
+
+    PRIMARY KEY (Region_ID),
+
+    UNIQUE (Region_Name)
+);
+
+
+CREATE TABLE Egg_Group (
+    EG_ID INT AUTO_INCREMENT,
+    EG_Name VARCHAR(50) NOT NULL,
+
+    PRIMARY KEY (EG_ID),
+
+    UNIQUE (EG_Name)
+);
+
+
+CREATE TABLE Leveling_Rate (
+    LR_ID INT AUTO_INCREMENT,
+    LR_Name VARCHAR(50) NOT NULL,
+
+    PRIMARY KEY (LR_ID),
+
+    UNIQUE (LR_Name)
+);
+
+
+CREATE TABLE Game_Version (
+    GV_ID INT AUTO_INCREMENT,
+    GV_Name VARCHAR(50) NOT NULL,
+
+    PRIMARY KEY (GV_ID),
+
+    UNIQUE (GV_Name)
+);
+
+
+CREATE TABLE Evolution_Method (
+    EM_ID INT AUTO_INCREMENT,
+    EM_Desc VARCHAR(255) NOT NULL,
+
+    PRIMARY KEY (EM_ID)
+);
+
+
+CREATE TABLE Item (
+    Item_ID INT AUTO_INCREMENT,
+    Item_Desc VARCHAR(255),
+    Item_Count INT NOT NULL DEFAULT 1,
+
+    PRIMARY KEY (Item_ID),
+
+    CHECK (Item_Count >= 0)
+);
+
+
+/* ============================================================
+   2. MOVE
+   ============================================================ */
+
+CREATE TABLE Move (
+    Move_ID INT AUTO_INCREMENT,
+    Type_ID INT NOT NULL,
+    Move_Name VARCHAR(50) NOT NULL,
+    Move_BP INT,
+    Move_Category VARCHAR(20),
+    Move_PP INT,
+    Move_Accuracy DECIMAL(5,2),
+
+    PRIMARY KEY (Move_ID),
+
+    UNIQUE (Move_Name),
+
+    FOREIGN KEY (Type_ID)
+        REFERENCES Type(Type_ID)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
+
+    CHECK (Move_BP IS NULL OR Move_BP >= 0),
+    CHECK (Move_PP IS NULL OR Move_PP >= 0),
+    CHECK (Move_Accuracy IS NULL OR
+           (Move_Accuracy >= 0 AND Move_Accuracy <= 100))
+);
+
+
+/* ============================================================
+   3. POKEMON SPECIES
+   ============================================================ */
+
+CREATE TABLE Pokemon_Species (
+    PokeSpec_ID INT AUTO_INCREMENT,
+
+    PokeSpec_GRatio DECIMAL(5,2),
+    PokeSpec_Base_HP INT NOT NULL,
+    PokeSpec_Base_Att INT NOT NULL,
+    PokeSpec_Base_Def INT NOT NULL,
+    PokeSpec_Base_SpeAtt INT NOT NULL,
+    PokeSpec_Base_SpDef INT NOT NULL,
+    PokeSpec_Base_Speed INT NOT NULL,
+
+    PokeSpec_Sprite VARCHAR(255),
+    PokeSpec_Name VARCHAR(50) NOT NULL,
+
+    PRIMARY KEY (PokeSpec_ID),
+
+    UNIQUE (PokeSpec_Name),
+
+    CHECK (PokeSpec_GRatio IS NULL OR
+           (PokeSpec_GRatio >= 0 AND PokeSpec_GRatio <= 100)),
+
+    CHECK (PokeSpec_Base_HP >= 0),
+    CHECK (PokeSpec_Base_Att >= 0),
+    CHECK (PokeSpec_Base_Def >= 0),
+    CHECK (PokeSpec_Base_SpeAtt >= 0),
+    CHECK (PokeSpec_Base_SpDef >= 0),
+    CHECK (PokeSpec_Base_Speed >= 0)
+);
+
+
+/* ============================================================
+   4. LOCATION
+   ============================================================ */
+
+CREATE TABLE Location (
+    Loc_ID INT AUTO_INCREMENT,
+    Region_ID INT NOT NULL,
+    Loc_Name VARCHAR(100) NOT NULL,
+
+    PRIMARY KEY (Loc_ID),
+
+    FOREIGN KEY (Region_ID)
+        REFERENCES Region(Region_ID)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+);
+
+
+/* ============================================================
+   5. TRAINER
+   ============================================================ */
+
+CREATE TABLE Trainer (
+    Trainer_ID INT AUTO_INCREMENT,
+    Region_ID INT NOT NULL,
+    Trainer_Name VARCHAR(100) NOT NULL,
+    Trainer_Badge_Count INT NOT NULL DEFAULT 0,
+    Trainer_Title VARCHAR(100),
+    Trainer_Gender VARCHAR(20),
+
+    PRIMARY KEY (Trainer_ID),
+
+    FOREIGN KEY (Region_ID)
+        REFERENCES Region(Region_ID)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
+
+    CHECK (Trainer_Badge_Count >= 0)
+);
+
+
+/* ============================================================
+   6. POKEMON
+   ============================================================ */
+
+CREATE TABLE Pokemon (
+    Poke_ID INT AUTO_INCREMENT,
+
+    Region_ID INT NOT NULL,
+    LR_ID INT NOT NULL,
+    PokeSpec_ID INT NOT NULL,
+
+    Poke_Gender VARCHAR(20),
+
+    PRIMARY KEY (Poke_ID),
+
+    FOREIGN KEY (Region_ID)
+        REFERENCES Region(Region_ID)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
+
+    FOREIGN KEY (LR_ID)
+        REFERENCES Leveling_Rate(LR_ID)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
+
+    FOREIGN KEY (PokeSpec_ID)
+        REFERENCES Pokemon_Species(PokeSpec_ID)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+);
+
+
+/* ============================================================
+   7. DEX ENTRY
+   ============================================================ */
+
+CREATE TABLE Dex_Entry (
+    PokeSpec_ID INT NOT NULL,
+    GV_ID INT NOT NULL,
+    Entry_Desc TEXT NOT NULL,
+
+    PRIMARY KEY (PokeSpec_ID, GV_ID),
+
+    FOREIGN KEY (PokeSpec_ID)
+        REFERENCES Pokemon_Species(PokeSpec_ID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (GV_ID)
+        REFERENCES Game_Version(GV_ID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+
+/* ============================================================
+   8. POKEMON MOVE
+   ============================================================ */
+
+CREATE TABLE PokemonMove (
+    Poke_ID INT NOT NULL,
+    Move_ID INT NOT NULL,
+    Current_Slot INT,
+
+    PRIMARY KEY (Poke_ID, Move_ID),
+
+    FOREIGN KEY (Poke_ID)
+        REFERENCES Pokemon(Poke_ID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (Move_ID)
+        REFERENCES Move(Move_ID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+
+    CHECK (Current_Slot IS NULL OR Current_Slot > 0)
+);
+
+
+/* ============================================================
+   9. LEARNSET
+   ============================================================ */
+
+CREATE TABLE Learnset (
+    PokeSpec_ID INT NOT NULL,
+    Move_ID INT NOT NULL,
+    Learn_Level INT,
+    Learn_Method VARCHAR(50),
+
+    PRIMARY KEY (PokeSpec_ID, Move_ID),
+
+    FOREIGN KEY (PokeSpec_ID)
+        REFERENCES Pokemon_Species(PokeSpec_ID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (Move_ID)
+        REFERENCES Move(Move_ID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+
+    CHECK (Learn_Level IS NULL OR Learn_Level >= 0)
+);
+
+
+/* ============================================================
+   10. POKEMON TYPE
+   ============================================================ */
+
+CREATE TABLE PokemonType (
+    PokeSpec_ID INT NOT NULL,
+    Type_ID INT NOT NULL,
+    Type_Slot INT NOT NULL,
+
+    PRIMARY KEY (PokeSpec_ID, Type_ID),
+
+    FOREIGN KEY (PokeSpec_ID)
+        REFERENCES Pokemon_Species(PokeSpec_ID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (Type_ID)
+        REFERENCES Type(Type_ID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+
+    CHECK (Type_Slot > 0)
+);
+
+
+/* ============================================================
+   11. POKEMON ABILITY
+   ============================================================ */
+
+CREATE TABLE PokemonAbility (
+    Poke_ID INT NOT NULL,
+    Ablty_ID INT NOT NULL,
+    Ability_Slot INT NOT NULL,
+
+    PRIMARY KEY (Poke_ID, Ablty_ID),
+
+    FOREIGN KEY (Poke_ID)
+        REFERENCES Pokemon(Poke_ID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (Ablty_ID)
+        REFERENCES Ability(Ablty_ID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+
+    CHECK (Ability_Slot > 0)
+);
+
+
+/* ============================================================
+   12. POKEMON EGG GROUP
+   ============================================================ */
+
+CREATE TABLE PokemonEggGroup (
+    PokeSpec_ID INT NOT NULL,
+    EG_ID INT NOT NULL,
+
+    PRIMARY KEY (PokeSpec_ID, EG_ID),
+
+    FOREIGN KEY (PokeSpec_ID)
+        REFERENCES Pokemon_Species(PokeSpec_ID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (EG_ID)
+        REFERENCES Egg_Group(EG_ID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
+
+
+/* ============================================================
+   13. EVOLUTION
+   ============================================================ */
+
+CREATE TABLE Evolution (
+    From_PokeSpec_ID INT NOT NULL,
+    To_PokeSpec_ID INT NOT NULL,
+    EM_ID INT NOT NULL,
+    Evolution_Level INT,
+
+    PRIMARY KEY (From_PokeSpec_ID, To_PokeSpec_ID),
+
+    FOREIGN KEY (From_PokeSpec_ID)
+        REFERENCES Pokemon_Species(PokeSpec_ID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (To_PokeSpec_ID)
+        REFERENCES Pokemon_Species(PokeSpec_ID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (EM_ID)
+        REFERENCES Evolution_Method(EM_ID)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
+
+    CHECK (Evolution_Level IS NULL OR Evolution_Level >= 0)
+);
+
+
+/* ============================================================
+   14. ENCOUNTER
+   ============================================================ */
+
+CREATE TABLE Encounter (
+    Poke_ID INT NOT NULL,
+    Loc_ID INT NOT NULL,
+
+    Encounter_Method VARCHAR(50),
+    Encounter_Rate DECIMAL(5,2),
+    Min_Level INT,
+    Max_Level INT,
+
+    PRIMARY KEY (Poke_ID, Loc_ID),
+
+    FOREIGN KEY (Poke_ID)
+        REFERENCES Pokemon(Poke_ID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (Loc_ID)
+        REFERENCES Location(Loc_ID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+
+    CHECK (Encounter_Rate IS NULL OR
+           (Encounter_Rate >= 0 AND Encounter_Rate <= 100)),
+
+    CHECK (Min_Level IS NULL OR Min_Level >= 0),
+    CHECK (Max_Level IS NULL OR Max_Level >= 0),
+    CHECK (Max_Level IS NULL OR Min_Level IS NULL OR Max_Level >= Min_Level)
+);
+
+
+/* ============================================================
+   15. TRAINER POKEMON
+   ============================================================ */
+
+CREATE TABLE TrainerPokemon (
+    Trainer_ID INT NOT NULL,
+    Poke_ID INT NOT NULL,
+    Item_ID INT,
+
+    Pokemon_Level INT NOT NULL,
+    Party_Slot INT NOT NULL,
+
+    PRIMARY KEY (Trainer_ID, Poke_ID),
+
+    FOREIGN KEY (Trainer_ID)
+        REFERENCES Trainer(Trainer_ID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (Poke_ID)
+        REFERENCES Pokemon(Poke_ID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (Item_ID)
+        REFERENCES Item(Item_ID)
+        ON UPDATE CASCADE
+        ON DELETE SET NULL,
+
+    CHECK (Pokemon_Level > 0),
+    CHECK (Party_Slot > 0)
+);
+
+
+/* ============================================================
+   16. TRAINER ITEM
+   ============================================================ */
+
+CREATE TABLE TrainerItem (
+    Trainer_ID INT NOT NULL,
+    Item_ID INT NOT NULL,
+    Item_Count INT NOT NULL DEFAULT 1,
+
+    PRIMARY KEY (Trainer_ID, Item_ID),
+
+    FOREIGN KEY (Trainer_ID)
+        REFERENCES Trainer(Trainer_ID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (Item_ID)
+        REFERENCES Item(Item_ID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+
+    CHECK (Item_Count >= 0)
+);
+
+
+/* ============================================================
+   17. TYPE EFFECTIVENESS
+   ============================================================ */
+
+CREATE TABLE TypeEffectiveness (
+    Attack_Type_ID INT NOT NULL,
+    Defense_Type_ID INT NOT NULL,
+    Effectiveness_Multiplier DECIMAL(4,2) NOT NULL,
+
+    PRIMARY KEY (Attack_Type_ID, Defense_Type_ID),
+
+    FOREIGN KEY (Attack_Type_ID)
+        REFERENCES Type(Type_ID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (Defense_Type_ID)
+        REFERENCES Type(Type_ID)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+
+    CHECK (Effectiveness_Multiplier >= 0)
+);
+
+
+/* ============================================================
+   VERIFY TABLE CREATION
+   ============================================================ */
+
+SHOW TABLES;
