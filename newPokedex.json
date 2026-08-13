@@ -12628,7 +12628,7 @@
     },
     "Burmy-Sandy": {
         "name": "Burmy-Sandy",
-        "dexNum": -1,
+        "dexNum": 412,
         "baseSpecies": "Burmy",
         "forme": "Sandy",
         "image": "N/A",
@@ -12651,7 +12651,7 @@
     },
     "Burmy-Trash": {
         "name": "Burmy-Trash",
-        "dexNum": -1,
+        "dexNum": 412,
         "baseSpecies": "Burmy",
         "forme": "Trash",
         "image": "N/A",
@@ -12973,7 +12973,7 @@
     },
     "Shellos-East": {
         "name": "Shellos-East",
-        "dexNum": -1,
+        "dexNum": 422,
         "baseSpecies": "Shellos",
         "forme": "East",
         "image": "422-e",
@@ -13019,7 +13019,7 @@
     },
     "Gastrodon-East": {
         "name": "Gastrodon-East",
-        "dexNum": -1,
+        "dexNum": 423,
         "baseSpecies": "Gastrodon",
         "forme": "East",
         "image": "423-e",
@@ -17987,7 +17987,7 @@
     },
     "Deerling-Summer": {
         "name": "Deerling-Summer",
-        "dexNum": -1,
+        "dexNum": 585,
         "baseSpecies": "Deerling",
         "forme": "Summer",
         "image": "N/A",
@@ -18010,7 +18010,7 @@
     },
     "Deerling-Autumn": {
         "name": "Deerling-Autumn",
-        "dexNum": -1,
+        "dexNum": 585,
         "baseSpecies": "Deerling",
         "forme": "Autumn",
         "image": "N/A",
@@ -18033,7 +18033,7 @@
     },
     "Deerling-Winter": {
         "name": "Deerling-Winter",
-        "dexNum": -1,
+        "dexNum": 585,
         "baseSpecies": "Deerling",
         "forme": "Winter",
         "image": "N/A",
@@ -20402,7 +20402,7 @@
     },
     "Vivillon-Icy Snow": {
         "name": "Vivillon-Icy Snow",
-        "dexNum": -1,
+        "dexNum": 666,
         "baseSpecies": "Vivillon",
         "forme": "Icy Snow",
         "image": "N/A",
@@ -20425,7 +20425,7 @@
     },
     "Vivillon-Polar": {
         "name": "Vivillon-Polar",
-        "dexNum": -1,
+        "dexNum": 666,
         "baseSpecies": "Vivillon",
         "forme": "Polar",
         "image": "N/A",
@@ -20448,7 +20448,7 @@
     },
     "Vivillon-Tundra": {
         "name": "Vivillon-Tundra",
-        "dexNum": -1,
+        "dexNum": 666,
         "baseSpecies": "Vivillon",
         "forme": "Tundra",
         "image": "N/A",
@@ -20471,7 +20471,7 @@
     },
     "Vivillon-Continental": {
         "name": "Vivillon-Continental",
-        "dexNum": -1,
+        "dexNum": 666,
         "baseSpecies": "Vivillon",
         "forme": "Continental",
         "image": "N/A",
@@ -20494,7 +20494,7 @@
     },
     "Vivillon-Garden": {
         "name": "Vivillon-Garden",
-        "dexNum": -1,
+        "dexNum": 666,
         "baseSpecies": "Vivillon",
         "forme": "Garden",
         "image": "N/A",
@@ -20517,7 +20517,7 @@
     },
     "Vivillon-Elegant": {
         "name": "Vivillon-Elegant",
-        "dexNum": -1,
+        "dexNum": 666,
         "baseSpecies": "Vivillon",
         "forme": "Elegant",
         "image": "N/A",
@@ -20540,7 +20540,7 @@
     },
     "Vivillon-Modern": {
         "name": "Vivillon-Modern",
-        "dexNum": -1,
+        "dexNum": 666,
         "baseSpecies": "Vivillon",
         "forme": "Modern",
         "image": "N/A",
@@ -20563,7 +20563,7 @@
     },
     "Vivillon-Marine": {
         "name": "Vivillon-Marine",
-        "dexNum": -1,
+        "dexNum": 666,
         "baseSpecies": "Vivillon",
         "forme": "Marine",
         "image": "N/A",
@@ -20586,7 +20586,7 @@
     },
     "Vivillon-Archipelago": {
         "name": "Vivillon-Archipelago",
-        "dexNum": -1,
+        "dexNum": 666,
         "baseSpecies": "Vivillon",
         "forme": "Archipelago",
         "image": "N/A",
@@ -20609,7 +20609,7 @@
     },
     "Vivillon-High Plains": {
         "name": "Vivillon-High Plains",
-        "dexNum": -1,
+        "dexNum": 666,
         "baseSpecies": "Vivillon",
         "forme": "High Plains",
         "image": "N/A",
@@ -20632,7 +20632,7 @@
     },
     "Vivillon-Sandstorm": {
         "name": "Vivillon-Sandstorm",
-        "dexNum": -1,
+        "dexNum": 666,
         "baseSpecies": "Vivillon",
         "forme": "Sandstorm",
         "image": "N/A",
@@ -20655,7 +20655,7 @@
     },
     "Vivillon-River": {
         "name": "Vivillon-River",
-        "dexNum": -1,
+        "dexNum": 666,
         "baseSpecies": "Vivillon",
         "forme": "River",
         "image": "N/A",
@@ -20678,7 +20678,7 @@
     },
     "Vivillon-Monsoon": {
         "name": "Vivillon-Monsoon",
-        "dexNum": -1,
+        "dexNum": 666,
         "baseSpecies": "Vivillon",
         "forme": "Monsoon",
         "image": "N/A",
@@ -20701,7 +20701,7 @@
     },
     "Vivillon-Savanna": {
         "name": "Vivillon-Savanna",
-        "dexNum": -1,
+        "dexNum": 666,
         "baseSpecies": "Vivillon",
         "forme": "Savanna",
         "image": "N/A",
@@ -20724,7 +20724,7 @@
     },
     "Vivillon-Sun": {
         "name": "Vivillon-Sun",
-        "dexNum": -1,
+        "dexNum": 666,
         "baseSpecies": "Vivillon",
         "forme": "Sun",
         "image": "N/A",
@@ -20747,7 +20747,7 @@
     },
     "Vivillon-Ocean": {
         "name": "Vivillon-Ocean",
-        "dexNum": -1,
+        "dexNum": 666,
         "baseSpecies": "Vivillon",
         "forme": "Ocean",
         "image": "N/A",
@@ -20770,7 +20770,7 @@
     },
     "Vivillon-Jungle": {
         "name": "Vivillon-Jungle",
-        "dexNum": -1,
+        "dexNum": 666,
         "baseSpecies": "Vivillon",
         "forme": "Jungle",
         "image": "N/A",
@@ -24680,7 +24680,7 @@
     },
     "Minior-Orange": {
         "name": "Minior-Orange",
-        "dexNum": -1,
+        "dexNum": 774,
         "baseSpecies": "Minior",
         "forme": "Orange",
         "image": "N/A",
@@ -24703,7 +24703,7 @@
     },
     "Minior-Yellow": {
         "name": "Minior-Yellow",
-        "dexNum": -1,
+        "dexNum": 774,
         "baseSpecies": "Minior",
         "forme": "Yellow",
         "image": "N/A",
@@ -24726,7 +24726,7 @@
     },
     "Minior-Green": {
         "name": "Minior-Green",
-        "dexNum": -1,
+        "dexNum": 774,
         "baseSpecies": "Minior",
         "forme": "Green",
         "image": "N/A",
@@ -24749,7 +24749,7 @@
     },
     "Minior-Blue": {
         "name": "Minior-Blue",
-        "dexNum": -1,
+        "dexNum": 774,
         "baseSpecies": "Minior",
         "forme": "Blue",
         "image": "N/A",
@@ -24772,7 +24772,7 @@
     },
     "Minior-Indigo": {
         "name": "Minior-Indigo",
-        "dexNum": -1,
+        "dexNum": 774,
         "baseSpecies": "Minior",
         "forme": "Indigo",
         "image": "N/A",
@@ -24795,7 +24795,7 @@
     },
     "Minior-Violet": {
         "name": "Minior-Violet",
-        "dexNum": -1,
+        "dexNum": 774,
         "baseSpecies": "Minior",
         "forme": "Violet",
         "image": "N/A",
@@ -27808,7 +27808,7 @@
     },
     "Alcremie-Ruby-Cream": {
         "name": "Alcremie-Ruby-Cream",
-        "dexNum": -1,
+        "dexNum": 869,
         "baseSpecies": "Alcremie",
         "forme": "Ruby-Cream",
         "image": "N/A",
@@ -27831,7 +27831,7 @@
     },
     "Alcremie-Matcha-Cream": {
         "name": "Alcremie-Matcha-Cream",
-        "dexNum": -1,
+        "dexNum": 869,
         "baseSpecies": "Alcremie",
         "forme": "Matcha-Cream",
         "image": "N/A",
@@ -27854,7 +27854,7 @@
     },
     "Alcremie-Mint-Cream": {
         "name": "Alcremie-Mint-Cream",
-        "dexNum": -1,
+        "dexNum": 869,
         "baseSpecies": "Alcremie",
         "forme": "Mint-Cream",
         "image": "N/A",
@@ -27877,7 +27877,7 @@
     },
     "Alcremie-Lemon-Cream": {
         "name": "Alcremie-Lemon-Cream",
-        "dexNum": -1,
+        "dexNum": 869,
         "baseSpecies": "Alcremie",
         "forme": "Lemon-Cream",
         "image": "N/A",
@@ -27900,7 +27900,7 @@
     },
     "Alcremie-Ruby-Swirl": {
         "name": "Alcremie-Ruby-Swirl",
-        "dexNum": -1,
+        "dexNum": 869,
         "baseSpecies": "Alcremie",
         "forme": "Ruby-Swirl",
         "image": "N/A",
@@ -27923,7 +27923,7 @@
     },
     "Alcremie-Caramel-Swirl": {
         "name": "Alcremie-Caramel-Swirl",
-        "dexNum": -1,
+        "dexNum": 869,
         "baseSpecies": "Alcremie",
         "forme": "Caramel-Swirl",
         "image": "N/A",
@@ -27946,7 +27946,7 @@
     },
     "Alcremie-Rainbow-Swirl": {
         "name": "Alcremie-Rainbow-Swirl",
-        "dexNum": -1,
+        "dexNum": 869,
         "baseSpecies": "Alcremie",
         "forme": "Rainbow-Swirl",
         "image": "N/A",
