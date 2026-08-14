@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Pokédex Database</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="header">
+
+    <div class="header-container">
+
+        <a
+            href="index.html"
+            class="logo logo-link"
+        >
+
+            <div class="pokeball-logo">
+
+                <div class="pokeball-center"></div>
+
+            </div>
+
+            <div>
+
+                <h1>Pokédex</h1>
+
+                <span>Database</span>
+
+            </div>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<nav class="navigation">
+
+    <div class="nav-container">
+
+        <a
+            href="index.html"
+            class="nav-item active"
+        >
+            Home
+        </a>
+
+
+        <a
+            href="pokemon.php"
+            class="nav-item"
+        >
+            Pokémon
+        </a>
+
+
+        <a
+            href="moves.php"
+            class="nav-item"
+        >
+            Moves
+        </a>
+
+
+        <a
+            href="abilities.php"
+            class="nav-item"
+        >
+            Abilities
+        </a>
+
+
+        <a
+            href="items.php"
+            class="nav-item"
+        >
+            Items
+        </a>
+
+
+        <a
+            href="query.php"
+            class="nav-item"
+        >
+            Query Database
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================================
+     MAIN CONTENT
+========================================================= -->
+
+<main class="main-container">
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="hero">
+
+        <p class="eyebrow">
+            Pokémon Database
+        </p>
+
+
+        <h2>
+            Explore the Pokémon Database
+        </h2>
+
+
+        <p class="hero-description">
+
+            Search and browse Pokémon species, individual Pokémon,
+            moves, abilities, items, trainers, locations, and more
+            stored in the database.
+
+        </p>
+
+
+        <!-- =================================================
+             MAIN SEARCH
+        ================================================== -->
+
+        <form
+            class="home-search"
+            action="pokemon.php"
+            method="GET"
+        >
+
+            <span class="search-icon">
+                ⌕
+            </span>
+
+
+            <input
+                type="text"
+                name="search"
+                placeholder="Search for a Pokémon..."
+                autocomplete="off"
+            >
+
+
+            <button
+                type="submit"
+                class="search-button"
+            >
+                Search
+            </button>
+
+        </form>
+
+
+        <!-- =================================================
+             DATABASE OPTIONS
+        ================================================== -->
+
+        <div class="hero-options">
+
+            <a
+                href="pokemon.php"
+                class="hero-option"
+            >
+                Browse Pokémon
+            </a>
+
+
+            <a
+                href="query.php"
+                class="hero-option"
+            >
+                Query Database
+            </a>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <span>
+            Pokédex Database
+        </span>
+
+        <span>
+            Database Management System
+        </span>
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>
