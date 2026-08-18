@@ -258,6 +258,12 @@ if (
         >
             Query Database
         </a>
+        <a
+            href="manage.php"
+            class="nav-item"
+        >
+            Manage
+        </a>
 
     </div>
 

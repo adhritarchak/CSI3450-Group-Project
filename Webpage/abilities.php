@@ -191,7 +191,12 @@ while ($row = mysqli_fetch_assoc($result)) {
         >
             Query Database
         </a>
-
+        <a
+            href="manage.php"
+            class="nav-item"
+        >
+            Manage
+        </a>
     </div>
 
 </nav>
